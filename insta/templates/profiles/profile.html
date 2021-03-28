@@ -1,0 +1,53 @@
+{% extends 'profiles/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <br><br>
+
+    <div class="card mb-3" style="border: none;">
+        
+        {% for my_profile in profile %}
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{my_profile.profile_pic.url}} " style="border-radius: 50%; width: 20vmin; height: 20vmin;" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Brayoh King  <a href="{% url 'edit_profile' %}" type="button" class="btn btn-warning"> Edit Profile </a> </h5>
+              <p class="card-text"> [followers]  [following] [posts] </p>
+              
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+          
+      <h1 class="text-center"> PHOTOS</h1> <hr> 
+        {% for phot in photo %}
+        <div class="row" > 
+          <div class="col-md-4">
+            <div style="position: absolute; border-radius: 8px; background-color: rgba(15, 83, 230, 0.61);">
+              <img src=" {{phot.image.url}} " style=" width: 50vmin; height: 50vmin;" alt="...">
+              <div class="botoom-right text-light ml-5" style="font-size: 1rem;">
+                {{phot.image_caption}}
+              </div>
+              <p class="card-text">
+                <small><b  class="btn btn-primary"> {{phot.likes}} likes</b>
+                  
+                  <b  class="btn btn-outline-dark">{{phot.comments}}</b></small>   </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+          
+          
+      </div>
+</div>
+
+<style>
+  .bottom-right {
+    color: #fff;
+    margin-left: 20vmin;
+}
+</style>
+{% endblock content %}

@@ -2,50 +2,62 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <h2 class="text-center p-2">INSTA APP</h2>
 
-    
-    <div class="row">
-        <!--  -->
-        {% for photo in photos  %}
-        <div class="col-md-7">
-            <div class="card " style="height: 5vmin; border: none; ">
-                <p>
-                    <img style="border-radius: 50%; width: 5vmin; height: 5vmin;" src=" {{photo.profile.profile_pic.url}} " alt="...">
-                    {{photo.profile.name}}
-                </p>
-
-            </div>
-            <hr>
-            <img src="{{photo.image.url}} "  class="card-img-top" style="height: 70vh;" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{photo.image_name}} </h5>
-                <p class="card-text">  </p>
-                <p class="card-text"><small class="text-muted">
-                {{photo.image_caption}}
-                </small></p>
-            </div>
-        </div>
-        {% endfor %}  
-     
-        
-        {% for profile in profiles %}
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"> {{profile.bio}} </li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-footer">
-                  Card footer
+    <div class="container">
+        <div class="row">
+            <!--  -->
+            {% for photo in photos  %}
+            <div class="col-md-7">
+                <div class="card " style="height: 5vmin; border: none; ">
+                    <p>
+                        <img style="border-radius: 50%; width: 5vmin; height: 5vmin;" src=" {{photo.profile.profile_pic.url}} " alt="...">
+                        {{photo.profile.name}}
+                    </p>
                 </div>
-              </div>
-        </div>    
-        {% endfor %}
-               
+                <hr>
+                <img src="{{photo.image.url}} "  class="card-img-top" style="height: 70vh;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{photo.image_name}} </h5>
+                    <p class="card-text">  </p>
+                    <p class="card-text"><small class="text-muted">
+                    {{photo.image_caption}}
+                    </small></p>
+                </div>
+            </div>
+            {% endfor %} 
+                   
+        </div>
     </div>
+
+    <div class="container mine">
+        <h1>here me</h1>
+    </div>
+    {% for profile in profiles %}
+    <div class="#">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> {{profile.bio}} </li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-footer">
+              Card footer
+            </div>
+          </div>
+    </div>    
+    {% endfor %}
+    
     
 </div>
+
+<style>
+    .mine{
+        float: right;
+        z-index: 1;
+        right: 0;
+        top: 0;
+    }
+</style>
 {% endblock content %}

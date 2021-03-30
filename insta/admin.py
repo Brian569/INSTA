@@ -6,7 +6,7 @@ from .models import (
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('bio',)
+    list_display = ('bio','name')
     
 
 @admin.register(Image)

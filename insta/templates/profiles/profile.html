@@ -14,7 +14,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Brayoh King  <a href="{% url 'edit_profile' %}" type="button" class="btn btn-warning"> Edit Profile </a> </h5>
+              <h5 class="card-title"> {{my_profile.name}}  <a href="{% url 'edit_profile' %}" type="button" class="btn btn-warning"> Edit Profile </a> </h5>
               <p class="card-text"> [followers]  [following] [posts] </p>
               
           </div>
@@ -25,8 +25,8 @@
       <h1 class="text-center"> PHOTOS</h1> <hr> 
         {% for phot in photo %}
         <div class="row" > 
-          <div class="col-md-4">
-            <div style="position: absolute; border-radius: 8px; background-color: rgba(15, 83, 230, 0.61);">
+          <div class="col-md-4 my-2">
+            <div style="position: absolute; border-radius: 8px;">
               <img src=" {{phot.image.url}} " style=" width: 50vmin; height: 50vmin;" alt="...">
               <div class="botoom-right text-light ml-5" style="font-size: 1rem;">
                 {{phot.image_caption}}
@@ -34,7 +34,9 @@
               <p class="card-text">
                 <small><b  class="btn btn-primary"> {{phot.likes}} likes</b>
                   
-                  <b  class="btn btn-outline-dark">{{phot.comments}}</b></small>   </p>
+                  <b  class="btn btn-outline-dark">
+                    <a href="{% url 'comments' %}">Comments</a>
+                  </b></small>   </p>
             </div>
           </div>
         </div>

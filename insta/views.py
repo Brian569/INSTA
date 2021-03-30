@@ -47,3 +47,12 @@ def comments(request):
     context = {'profiles': profile, "photos" : photo}
 
     return render(request, 'profiles/comments.html', context)
+
+def login(request):
+
+    return render(request, 'my_accounts/login.html')
+
+def register(request):
+
+    
+    return (request, 'my_accounts/register.html')

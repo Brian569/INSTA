@@ -28,3 +28,4 @@ class Image(models.Model):
 
     class Meta:
         verbose_name_plural = 'Images'
+        ordering = ['pub_date']

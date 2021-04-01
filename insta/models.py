@@ -23,6 +23,7 @@ class Image(models.Model):
     comments = models.TextField(max_length=500)
     pub_date = models.DateTimeField(auto_now_add=True)
     follows = models.IntegerField()
+    following = models.IntegerField()
 
     def __str__(self):
         return self.image_name

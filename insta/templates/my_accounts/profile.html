@@ -33,14 +33,15 @@
             </div>
             <div class="level-item has-text-centered">
               <div>
+                {% for photo in photos %}
                 <p class="heading">Followers</p>
-                <p class="title">456K</p>
+                <p class="title">{{photo.follows}} </p>
               </div>
             </div>
             <div class="level-item has-text-centered">
               <div>
                 <p class="heading">Likes</p>
-                <p class="title">789</p>
+                <p class="title" > {{photo.likes}} </p>
               </div>
             </div>
           </nav>
@@ -68,7 +69,7 @@
           
           <div class="row">
 
-            {% for photo in photos %}
+            
             <div class="col-md-4">
                 <div class="card my-2" >
                     <img class="card-img-top mr-1 image-thumbnail " src=" {{photo.image.url}} " alt="Card image cap">                    

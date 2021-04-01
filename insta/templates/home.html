@@ -7,37 +7,49 @@
 
 {% for photo in photos %}
     
-<div class="columns is-mobile">
-    <div class="column is-three-fifths is-offset-one-fifth">
-
-        <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src=" {{photo.image.url}} " alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <img src=" {{photo.profile.profile_pic.url}} " alt="Placeholder image">
+<div class="container">
+    <div class="columns is-mobile">
+        <div class="column is-three-fifths is-offset-one-fifth">
+    
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-2by1 " style="height: 70vmin;">
+                    <img src="{{photo.image.url}}" alt="Placeholder image">
                   </figure>
                 </div>
-                <div class="media-content">
-                  <p class="title is-4"> {{photo.profile.name}}  </p>
-                  <p class="subtitle is-6"> <small class="text-muted">Img: </small> {{photo.image_name}} </p>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <img src=" {{photo.profile.profile_pic.url}} " alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4"> {{photo.profile.name}}  </p>
+                      <p class="subtitle is-6"> <small class="text-muted">Img: </small> {{photo.image_name}} </p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                      {{photo.image_caption}}
+                    <br>
+                    <time datetime="2016-1-1" class="text-muted"><i>Posted : {{photo.pub_date}} </i></time>
+                    <a href=""><br><br>
+                       <span class="material-icons">
+                            chat_bubble_outline
+                        </span>
+                    </a>
+                    <a href="">
+                        <span class="material-icons ml-4">
+                            favorite_border
+                        </span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-          
-              <div class="content">
-                  {{photo.image_caption}}
-                <br>
-                <time datetime="2016-1-1" class="text-muted"><i>Posted : {{photo.pub_date}} </i></time>
-              </div>
             </div>
+    
+            <br>
         </div>
-
-        <br>
     </div>
 </div>
 

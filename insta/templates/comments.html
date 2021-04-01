@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
+
+        
+        {% for message in messages %}
+            <h5> {{message}} </h5>
+        {% endfor %}
+            
+   
+   {% for photo in photos %}
+   <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+
+
+        <img src="{{photo.profile.profile_pic.url}}">
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong> {{photo.profile.name}} </strong>
+          <br>
+          {{photo.comments}}
+           <br>
+          <small> {{photo.pub_date}} </small>
+        </p>
+      </div>
+    </div>
+  </article>
+  <br><br>
+   {% endfor %}
+       
+  
+  <form  method="post">
+      {% csrf_token %}
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <span class="material-icons">
+                chat_bubble_outline
+            </span>
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea" name="comment" placeholder="Add a comment..."></textarea>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button" type="submit">Post comment</button>
+            </p>
+          </div>
+        </div>
+      </article>
+  </form>
+            
+    </div>
+    </div>
+  </div>
+
+{% endblock content %}
+    

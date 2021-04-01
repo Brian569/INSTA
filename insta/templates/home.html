@@ -37,12 +37,12 @@
                     <a href=""><br><br>
                        <span class="material-icons">
                             chat_bubble_outline
-                        </span>
+                        </span> <a href="{% url 'comments' %}">Comments</a>
                     </a>
                     <a href="">
                         <span class="material-icons btn-outline-danger ml-4">
                             favorite_border
-                        </span>
+                        </span> {{photo.likes}} likes
                     </a>
                   </div>
                 </div>

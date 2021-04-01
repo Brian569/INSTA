@@ -23,15 +23,7 @@ def my_profile(request):
     context = {'profile': profile, 'photo': photo}
     prof_temps = {''}
 
-    return render(request, 'profiles/profile.html',context)
-
-def user_profile(request):
-
-    return render(request, 'profiles/user_profile.html')
-
-def edit_profile(request):
-
-    return render(request, 'profiles/edit_profile.html')
+    return render(request, 'my_accounts/profile.html',context)
 
 def comments(request):
 

@@ -20,7 +20,7 @@ def my_profile(request):
 
     profile = Profile.objects.all()
 
-    context = {'profile': profile, 'photo': photo}
+    context = {'profiles': profile, 'photos': photo}
     prof_temps = {''}
 
     return render(request, 'my_accounts/profile.html',context)

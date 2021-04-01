@@ -26,19 +26,20 @@ def my_profile(request):
     return render(request, 'my_accounts/profile.html',context)
 
 def comments(request):
+    if request.method == 'POST':
+        commentss = request.POST['comment']
+        comment = Image.objects.all()
+        comment.create(comments=commentss)
+        
+        print('comment saved')    
 
-    profile = request.GET.get('comments')
-    if profile == None:
+    else:
         photo = Image.objects.all()
     
-    else:
-        photo = Image.objects.filter(profile__name__contains=comments)
 
-    profile = Profile.objects.all()
+    context = { "photos" : photo}
 
-    context = {'profiles': profile, "photos" : photo}
-
-    return render(request, 'profiles/comments.html', context)
+    return render(request, 'comments.html', context)
 
 def login(request):
 
@@ -48,3 +49,17 @@ def register(request):
 
     
     return (request, 'my_accounts/register.html')
+
+
+def likes(request, pk):
+    if request.method == 'POST':
+        like = request.POST['likes']
+        liky = Image.objects.filter(pk = pk)
+        liky.save()
+
+        print(';like saved')
+
+    else:
+       liky = Image.objects.all() 
+
+    return render(request, 'my_accounts/profile.html', {'likes': liky})

@@ -11,32 +11,28 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'home' %}">
-            <i class="material-icons ">home</i>Home </a>
+            <small><i class="material-icons ">home</i></small> Home </a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">
             <i class="material-icons">explore</i> Explore</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
-              <i class="material-icons">circle_notifications</i>
-              Notifications</a>
-        </li>
+        
         <li class="nav-item active">
             <a class="nav-link" href="#">
-                <i class="material-icons">inbox</i>Inbox</a>
+             <small><i class="material-icons">inbox</i></small> Inbox</a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'profile' %}">
-                <i class="material-icons">account_circle</i>Profile</a>
+             <small><i class="material-icons">account_circle</i></small> Profile</a>
         </li>
         <li class="dropdown nav-item active ">
             <button class="nav-link dropbtn"  href="#">
-                Settings <i class="material-icons">arrow_drop_down</i></button>
+                Settings <small><i class="material-icons">arrow_drop_down</i></small> </button>
             <div class="dropdown-content">
-                <a class="nav-link" href="#">Change password</a>
-                <a class="nav-link" href="#">Report an issue</a>
-                <a class="nav-link" href="#">Log out</a> 
+                <a class="nav-link" href="#" style="margin-right: 15px; padding-right: 15px;">Change password</a>
+                <a class="nav-link" href="#" style="margin-right: 15px; padding-right: 15px;">Report an issue</a>
+                <a class="nav-link" href="#" style="margin-right: 15px; padding-right: 15px;">Log out</a> 
             </div>
         </li>
           

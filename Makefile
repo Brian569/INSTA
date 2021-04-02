@@ -1,20 +1,20 @@
 serve:
-	python3 manage.py runserver
+	python manage.py runserver
 
 migrations:
-	python3 manage.py makemigrations
+	python manage.py makemigrations
 
 migrate:
-	python3 manage.py migrate
+	python manage.py migrate
 
 admin:
-	python3 manage.py createsuperuser
+	python manage.py createsuperuser
 
 shell:
-	python3 manage.py shell
+	python manage.py shell
 
 check:
-	python3 manage.py check
+	python manage.py check
 
 test:
-	python3 manage.py test
+	python manage.py test

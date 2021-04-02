@@ -22,20 +22,32 @@
             <a class="nav-link" href="#">
              <small><i class="material-icons">inbox</i></small> Inbox</a>
         </li>
+
+        
+        {% if user.is_authenticated %}
+          
+        
+          
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'profile' %}">
-             <small><i class="material-icons">account_circle</i></small> Profile</a>
+             <small><i class="material-icons">account_circle</i></small>  {{user.username}} </a>
         </li>
-        <li class="dropdown nav-item active ">
-            <button class="nav-link dropbtn"  href="#">
-                Settings <small><i class="material-icons">arrow_drop_down</i></small> </button>
-            <div class="dropdown-content">
-                <a class="nav-link" href="#" style="margin-right: 15px; padding-right: 15px;">Change password</a>
-                <a class="nav-link" href="#" style="margin-right: 15px; padding-right: 15px;">Report an issue</a>
-                <a class="nav-link" href="#" style="margin-right: 15px; padding-right: 15px;">Log out</a> 
-            </div>
+
+        <li class="nav-item active">
+          <a class="nav-link" href=" {% url 'logouts' %} " style="margin-right: 15px; padding-right: 15px;"><span class="material-icons">
+            logout
+            </span>Log out</a>
         </li>
+
+        {% else %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'login' %}" style="margin-right: 15px; padding-right: 15px;"><span class="material-icons">
+          login
+          </span>Login</a>
+     </li>
           
+     {% endif %}
       </ul>
     </div>
   </nav><br>

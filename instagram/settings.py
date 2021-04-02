@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('MY_SECRET')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'insta',
     'bootstrap4',
-    'cloudinary'
+    'cloudinary',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,6 @@ cloudinary.config(
   api_key = os.environ.get('API_KEY', '453724731425747'), 
   api_secret = os.environ.get('API_SECRET', '-XsLSJ6L86Sk3RCln7mjln7hPkQ') 
 )
+
+
+LOGIN_REDIRECT_URL = '/'

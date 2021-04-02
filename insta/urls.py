@@ -4,7 +4,8 @@ from .views import(
     my_profile,
     comments, 
     login,
-    register
+    register,
+    logout_view
 )
 
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path('profile/', my_profile, name='profile'),
     path('comments/', comments, name='comments'),
     path('login/', login, name = 'login'),
-    path('register/', register, name = 'register')
+    path('register/', register, name = 'register'),
+    path('logout/', logout_view, name='logouts')
 ]

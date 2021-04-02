@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Profile, Image
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def home(request):
     if request.method == 'GET':
         photos = Image.objects.all()
@@ -9,6 +13,7 @@ def home(request):
 
     return render(request, 'home.html', context)
 
+@login_required
 def my_profile(request):
     
     profile = request.GET.get('profile')
@@ -25,6 +30,7 @@ def my_profile(request):
 
     return render(request, 'my_accounts/profile.html',context)
 
+@login_required
 def comments(request):
     if request.method == 'POST':
         commentss = request.POST['comment']
@@ -63,3 +69,8 @@ def likes(request, pk):
        liky = Image.objects.all() 
 
     return render(request, 'my_accounts/profile.html', {'likes': liky})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

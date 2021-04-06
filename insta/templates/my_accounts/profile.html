@@ -48,8 +48,8 @@
 				</div>
 				<br>
 					{%if profile.user.id == user.id%}
-						<a class="btn btn-sm btn-success" href="">Upload Image</a>
-						<a class="btn btn-sm btn-primary" href=""> Update Profile</a>
+						<a class="btn btn-sm btn-success" href="{% url 'create' %}">Upload Image</a>
+						<a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> Update Profile</a>
 						
 					{%else%}
 						 {%if is_follow%}
@@ -70,55 +70,57 @@
 				<img class="center-block img-responsive img-circle" src="../../static/images/default.png" alt="" style="width:170px; height:170px">
 			</div>
 			<div class="col-md-8">
-				<h2><strong>{{user}}</strong></h2
+				<h2?><strong>{{user}}</strong></h2>
 				<h4><strong>0</strong> Post <strong>0</strong> Followers <strong>0</strong> Following</h4>
 				<h4>An Awesome Bio Will Appear Here</h4>
 				
-					<a class="btn btn-sm btn-success" href="">Create Post</a>
+					<a class="btn btn-sm btn-success" href="{% url 'create' %}">Create Post</a>
 					<a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> Update Profile</a>
 					
 			</div>
 		
-		</div>
-
-	{%endif%}
-
-	
 		
-	
-<hr>	
-</div>
 
-<div class="row">
-	<div class="container">
-	{%if images%}
-	{% for image in images%}
-	
-		<div class="col-md-4">				
-					
-		     <div class="hovereffect thumbnail">
-		        <a href="{% url 'single' image.id %}">
-				        	<img class="img-responsive" src="{{image.image.url}}" alt="">
-				</a>     
-		      
-		    </div>
-
-		</div>
-	
-	{%endfor%}
-	{%else%}
-		{%if profile.user.id == user.id%}
-			
-				<h3 class="text-center">You havent posted any images yet. Get started by posting one <a href="{% url 'create' %}">here</a></h3>
-		{%else%}
-			<h3 class="text-center">This user hasn't created any posts yet.</h3>
-
-		{%endif%}
 	{%endif%}
 
-	</div>
-</div>
 
+	<div class="tabs is-centered">
+		<ul>
+		  <li class="is-active">
+			<a style="text-decoration: none; color: blue;">
+			  <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+			  <span>Pictures
+				<span class="material-icons">
+					photo
+					</span>
+			  </span>
+			</a>
+		  </li>
+		</ul>
+	  </div>
+
+	  
+	  {% if images %}
+	   
+	   {% for photo in images %}
+		<div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
+			<div class="column">
+				<img src=" {{photo.image.url}} " style="height: 40vmin; width: 40vmin;" alt="">
+			</div>
+		</div>
+		
+	 
+	   {% endfor %}
+		   
+	  {% else %}
+	  <h2>
+		  You have no posts yet!
+	  </h2>
+	  {% endif %}
+		  
+
+	  
+</div>
 {%endblock%}
 
 

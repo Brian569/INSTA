@@ -7,14 +7,13 @@ from .forms import *
 
 @login_required
 def home(request):
-    if request.method == 'GET':
-        photos = Image.objects.all()
-
-    context = {"photos": photos}
-
-    return render(request, 'home.html', context)
-
-@login_required
+	'''
+	Method that fetches all images from all users.
+	'''
+	images = Image.objects.all()
+	title = "Discover"
+	
+	return render(request,'home.html',{"images":images,"title":title})
 
 def logout_view(request):
     logout(request)
@@ -38,7 +37,6 @@ def profile(request, prof_id):
 
 	return render(request,'my_accounts/profile.html',{"images":images,"profile":profile,"title":title,"is_follow":is_follow,"followers":followers,"following":following})
 	
-
 @login_required
 def updateProfile(request):
 
@@ -65,3 +63,24 @@ def updateProfile(request):
 			form = UpdateProfile()
 
 	return render(request, 'my_accounts/update_profile.html', {"form": form})
+
+
+@login_required
+def create(request):
+	
+	current_user = request.user
+	profile = Profile.objects.get(user = request.user.id)
+	title = "Create New Post"
+	if request.method == 'POST':
+		form = NewImagePost(request.POST,request.FILES)
+		if form.is_valid():
+			post = form.save(commit =  False)
+			post.profile = current_user
+			post.user_profile = profile
+			post.save()
+			return redirect('profile',current_user.id)
+	else:
+		
+		form = NewImagePost()
+
+	return render(request,'my_accounts/create_post.html',{"form":form,"title":title})

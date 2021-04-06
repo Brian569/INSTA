@@ -19,8 +19,8 @@ class Image(models.Model):
 	profile = models.ForeignKey(User, on_delete=models.CASCADE)
 	user_profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	likes = models.ManyToManyField(User,related_name = 'likes', blank = True)
-	image = models.ImageField(upload_to = 'images/', blank = True)
-
+	image = CloudinaryField(blank=True)
+	
 	@classmethod
 	def save_image(self):
 		self.save()

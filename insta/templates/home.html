@@ -36,7 +36,7 @@
                   <a href=""><br><br>
                      <span class="material-icons">
                           chat_bubble_outline
-                      </span> <a href="">{{image.comment | length}}Comments</a>
+                      </span> <a href="{% url 'comment' image.id %}">{{image.comment | length}}Comments</a>
                   </a>
                   <a href="">
                       <span class="material-icons btn-outline-danger ml-4">

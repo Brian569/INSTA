@@ -84,3 +84,21 @@ def create(request):
 		form = NewImagePost()
 
 	return render(request,'my_accounts/create_post.html',{"form":form,"title":title})
+
+
+@login_required
+def comment(request, image_id):
+	image = Image.get_image_by_id(image_id)
+	if request.method == 'POST':
+		form = CreateComment(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.image = image
+			comment.profile = request.user
+			comment.save()
+
+			return redirect('home')
+	else:
+		form = CreateComment()
+
+	return render(request, 'comments.html', {'form': form})

@@ -2,7 +2,7 @@ from django.urls import path,re_path
 from .views import(
     home, create,
     profile,updateProfile,
-    logout_view,
+    logout_view, comment,
 )
 
 urlpatterns = [
@@ -11,5 +11,6 @@ urlpatterns = [
     path('logout/', logout_view, name='logouts'),
     path('update/', updateProfile, name = 'updateProfile'),
     path('create/', create, name='create'),
+    re_path(r'comment/(\d+)', comment, name='comment'),
     
 ]

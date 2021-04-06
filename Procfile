@@ -1,4 +1,4 @@
-release: python3 manage.py makemigrations
-release: python3 manage.py migrate
+release: python manage.py makemigrations
+release: python manage.py migrate
 
 web: gunicorn insta.wsgi

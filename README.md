@@ -46,7 +46,7 @@ Run ``python3.6 manage.py runserver`` from the application's root and view live 
 * Querying the database and displaying
 
 ## To do 
-* finish the comments and likes functions before end of Thursday
+* finish the comments, following and likes functions before end of Thursday
 
 ## How I hundled the situation
 * Did research and practicals

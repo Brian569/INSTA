@@ -1,18 +1,14 @@
-from django.urls import path
+from django.urls import path,re_path
 from .views import(
-    home,
-    my_profile,
-    comments, 
-    login,
-    register,
-    logout_view
+    home, 
+    profile,updateProfile,
+    logout_view,
 )
 
 urlpatterns = [
     path('', home, name='home'),
-    path('profile/', my_profile, name='profile'),
-    path('comments/', comments, name='comments'),
-    path('login/', login, name = 'login'),
-    path('register/', register, name = 'register'),
-    path('logout/', logout_view, name='logouts')
+    re_path(r'profile/(\d+)',profile,name = 'profile'),
+    path('logout/', logout_view, name='logouts'),
+    path('update/', updateProfile, name = 'updateProfile'),
+    
 ]

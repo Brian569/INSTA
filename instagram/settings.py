@@ -90,7 +90,7 @@ DATABASES = {
     }
 }
 # DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
-
+# postgres://jvzdzappflasyh:9ccb59574d098459484047f2a33f5dd336df1d83df1ef01ea62c782bf0a2400b@ec2-18-206-20-102.compute-1.amazonaws.com:5432/dfi64t27e1mpj
 # postgres://:@:5432/
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

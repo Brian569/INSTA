@@ -1,111 +1,124 @@
-{% extends 'base.html' %}
-{% load bootstrap4 %}
+{%extends 'base.html'%}
+{% block content%}
+<div class="container">
+	{% if profile%}
 
+	{%for profile in profile%}
+		<div class="row" style="padding-bottom:20px">
+		
+			<div class="col-md-4">
+				<img class="center-block img-responsive img-circle" style="border-radius: 50%; height: 40vmin; width: 40vmin;" src="{{profile.profile_pic.url}}" alt="" style="width:170px; height:170px">
+			</div>
+			<div class="col-md-8">
+				<br><br><br>
+				<h2><strong><i>@{{profile.user}}</i></strong></h2>
+				<br><br>
 
-{% block content %}
-<div class="section">
-  <div class="container">
-    {% for profile in profiles %}
-    <article class="media">
-      <figure class="media-left image is-200x200">
-        <img class="is-rounded" style="width: 30vmin; height: 30vmin;" src=" {{profile.profile_pic.url}} ">
-      </figure>
-      <div class="media-content">
-        <div class="content">
+				<div class="level is-mobile">
+					<div class="level-item has-text-centered ">
+						<div>
+						  <h2 class="title"> Post{{images|pluralize}} </h2>
+						  <p class="title">{{images|length}}</p>
+						</div>
+					</div>
+					
+					<div class="level-item has-text-centered">
+						<div>
+						  <h2 class="title"> Follower{{followers|pluralize}} </h2>
+						  <p class="title">{{followers}}</p>
+						</div>
+					</div>
+	
+					<div class="level-item has-text-centered">
+						<div>
+						  <h2 class="title"> Following</h2>
+						  <p class="title">{{following}}</p>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="card" style="border-radius: 12px;">
+					<div class="card-title">
+						<h5 class="text-muted" style=" margin-left: 20px;"><i>Bio</i></h5>
+					</div>
+					<div class="card-body">
+						<h4>{{profile.bio}}</h4>
+					</div>
+				</div>
+				<br>
+					{%if profile.user.id == user.id%}
+						<a class="btn btn-sm btn-success" href="">Upload Image</a>
+						<a class="btn btn-sm btn-primary" href=""> Update Profile</a>
+						
+					{%else%}
+						 {%if is_follow%}
+						 <a href="" class="btn btn-danger">Unfollow</a>
+						 {%else%}
+						 <a href="" class="btn btn-success">Follow</a>
+				         {%endif%}
+				        
+					{%endif%}
+			</div>
+		
+		</div>
+	
+	{%endfor%}
+	{%else%}
 
-            
-            
-            <h4 style="font-weight: bold;" class="title">@ {{user.username}} </h4>
-            <small>
-              <h6 style="font-weight: bold;" class="title"> {{user.first_name}} </h6>
-            </small>
-            <!-- <button class="button is-success level-right">Follow</button> -->              
-          
-          </div> <br><br><br><br>
+			<div class="col-md-4">
+				<img class="center-block img-responsive img-circle" src="../../static/images/default.png" alt="" style="width:170px; height:170px">
+			</div>
+			<div class="col-md-8">
+				<h2><strong>{{user}}</strong></h2
+				<h4><strong>0</strong> Post <strong>0</strong> Followers <strong>0</strong> Following</h4>
+				<h4>An Awesome Bio Will Appear Here</h4>
+				
+					<a class="btn btn-sm btn-success" href="">Create Post</a>
+					<a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> Update Profile</a>
+					
+			</div>
+		
+		</div>
 
-          <nav class="level is-mobile">
-            <div class="level-item has-text-centered">
-            
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Following</p>
-                <p class="title">123</p>
-              </div>
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                {% for photo in photos %}
-                <p class="heading">Followers</p>
-                <p class="title">{{photo.follows}} </p>
-              </div>
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <p class="heading">Likes</p>
-                <p class="title" > {{photo.likes}} </p>
-              </div>
-            </div>
-          </nav>
+	{%endif%}
 
-          <div class="subtitle is-5 "> <br> <br><br>
-            <p>
-                <h3 ><i>BIO</i></h3>
-              {{profile.bio}}
-            </p>
-            <button class="button level-right">Edit Profile</button>
-          </div>
-
-          <div class="tabs is-centered">
-            <ul>
-              <li class="is-active"><a>
-                <i class="material-icons">auto_awesome_mosaic</i>
-                Posts</a></li>
-              <li>
-                <a>
-                  <i class="material-icons" >save_alt</i>
-                  Saved</a></li>
-
-            </ul>
-          </div>
-          
-          <div class="row">
-
-            
-            <div class="col-md-4">
-                <div class="card my-2" >
-                    <img class="card-img-top mr-1 image-thumbnail " src=" {{photo.image.url}} " alt="Card image cap">                    
-                </div>
-            </div>
-
-            {% empty %}
-
-            <h3>No photos ...</h3>
-            
-            {% endfor %}
-        </div>
-              
-            
-            {% endfor %}
-        
-
-      </div>
-
-     
-    </article>
-    
-  </div>
+	
+		
+	
+<hr>	
 </div>
 
-<style>
-    .image-thumbnail{
-        max-height: 300px;
-        object-fit: cover;
-    }
-    a{
-        text-decoration: none;
-    }
-</style>
+<div class="row">
+	<div class="container">
+	{%if images%}
+	{% for image in images%}
+	
+		<div class="col-md-4">				
+					
+		     <div class="hovereffect thumbnail">
+		        <a href="{% url 'single' image.id %}">
+				        	<img class="img-responsive" src="{{image.image.url}}" alt="">
+				</a>     
+		      
+		    </div>
 
-{% endblock content %}
-    
+		</div>
+	
+	{%endfor%}
+	{%else%}
+		{%if profile.user.id == user.id%}
+			
+				<h3 class="text-center">You havent posted any images yet. Get started by posting one <a href="{% url 'create' %}">here</a></h3>
+		{%else%}
+			<h3 class="text-center">This user hasn't created any posts yet.</h3>
+
+		{%endif%}
+	{%endif%}
+
+	</div>
+</div>
+
+{%endblock%}
+
+

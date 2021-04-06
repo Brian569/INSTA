@@ -32,7 +32,7 @@ The following are needed for the application to run on a local computer:
 Run ``python3.6 manage.py runserver`` from the application's root and view live on ``Localhost:8000`` in your local browser.
 
 ## Link
-<a href=''> Insta</a>
+<a href='https://my-instar.herokuapp.com/'> Insta</a>
 
 ## Known Bugs
 * The following system currently doesnt work as it should
@@ -51,6 +51,10 @@ Run ``python3.6 manage.py runserver`` from the application's root and view live 
 ## How I hundled the situation
 * Did research and practicals
 
+## Contacts
+* This is an open source code hence your feedback and input is highly appretiated.
+* Reach me at <a href='bnderitu48@gmail.com'>Brian Nderitu</a>
+- Thank you and welcome.
 ## License 
 MIT License
 
